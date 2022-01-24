@@ -155,6 +155,15 @@ img {
   opacity: 0.9;
   background: var(--light-color);
   color: #333;
+  border-radius: 0.5rem;
+}
+
+.alert-wrapper {
+  position: fixed;
+  top: 4rem;
+  right: 2rem;
+  display: inline-block;
+  border-radius: 25%;
 }
 
 .btn-primary,
