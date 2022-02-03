@@ -382,6 +382,18 @@ button {
     font-size: 1rem;
   }
 
+  .text-center {
+    text-align: center;
+  }
+  
+  .text-primary {
+    color: var(--primary-color);
+  }
+  
+  .text-dark {
+    color: var(--dark-color);
+  }
+
   /* Navbar */
   .navbar {
     display: block;

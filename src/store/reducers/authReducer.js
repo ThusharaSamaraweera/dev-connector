@@ -5,7 +5,8 @@ import {
   AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
-  LOGOUT
+  LOGOUT,
+  CLEAR_PROFILE
 } from './../actionTypes/authActionTypes'
 
 const initialState = {
@@ -48,7 +49,14 @@ function authReducer(state = initialState, action) {
         loading: false
       }
     
-      default:
+    case CLEAR_PROFILE:
+      return {
+        ...state,
+        profile: null,
+        repos: [],
+        loading: false
+      }
+    default:
         return state
   }
   
