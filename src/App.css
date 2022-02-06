@@ -159,11 +159,13 @@ img {
 }
 
 .alert-wrapper {
-  position: fixed;
-  top: 4rem;
-  right: 2rem;
-  display: inline-block;
+  position: sticky;
+  top: 5rem;
+  right: 0rem;
+  display: block;
+  width: 86%;
   border-radius: 25%;
+  left: 6rem;
 }
 
 .btn-primary,
