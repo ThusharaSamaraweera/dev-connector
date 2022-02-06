@@ -17,6 +17,7 @@ const CreateProfile = props => {
     youtube: '',
     instagram: ''
   })
+  const [visiableSocialInputs, setVisibleSocialInputs] = useState(false)
 
   const {
     company,
@@ -32,9 +33,13 @@ const CreateProfile = props => {
     instagra,
     youtube,
   } = formData;
+
+  const handleOnToggleSocialInputs = () => {
+    setVisibleSocialInputs(!visiableSocialInputs);
+  }
     
   return (
-    <Fragment>
+    <div className='container'>
       <h1 className="large text-primary">
         Create Your Profile
       </h1>
@@ -100,40 +105,46 @@ const CreateProfile = props => {
         </div>
 
         <div className="my-2">
-          <button type="button" className="btn btn-light">
+          <button onClick={ () => handleOnToggleSocialInputs()}  
+                  type="button" className="btn btn-light">
             Add Social Network Links
           </button>
           <span>Optional</span>
         </div>
 
-        <div className="form-group social-input">
-          <i class="fab fa-twitter fa-2x"></i>
-          <input type="text" placeholder="Twitter URL" name="twitter" />
-        </div>
+        {visiableSocialInputs && 
+          <Fragment>
+          <div className="form-group social-input">
+            <i class="fab fa-twitter fa-2x"></i>
+            <input type="text" placeholder="Twitter URL" name="twitter" />
+          </div>
 
-        <div class="form-group social-input">
-          <i class="fab fa-facebook fa-2x"></i>
-          <input type="text" placeholder="Facebook URL" name="facebook" />
-        </div>
+          <div class="form-group social-input">
+            <i class="fab fa-facebook fa-2x"></i>
+            <input type="text" placeholder="Facebook URL" name="facebook" />
+          </div>
 
-        <div class="form-group social-input">
-          <i class="fab fa-youtube fa-2x"></i>
-          <input type="text" placeholder="YouTube URL" name="youtube" />
-        </div>
+          <div class="form-group social-input">
+            <i class="fab fa-youtube fa-2x"></i>
+            <input type="text" placeholder="YouTube URL" name="youtube" />
+          </div>
 
-        <div class="form-group social-input">
-          <i class="fab fa-linkedin fa-2x"></i>
-          <input type="text" placeholder="Linkedin URL" name="linkedin" />
-        </div>
+          <div class="form-group social-input">
+            <i class="fab fa-linkedin fa-2x"></i>
+            <input type="text" placeholder="Linkedin URL" name="linkedin" />
+          </div>
 
-        <div class="form-group social-input">
-          <i class="fab fa-instagram fa-2x"></i>
-          <input type="text" placeholder="Instagram URL" name="instagram" />
-        </div>
+          <div class="form-group social-input">
+            <i class="fab fa-instagram fa-2x"></i>
+            <input type="text" placeholder="Instagram URL" name="instagram" />
+          </div>
+          </Fragment>
+        }
+
         <input type="submit" class="btn btn-primary my-1" />
         <a class="btn btn-light my-1" href="dashboard.html">Go Back</a>
       </form>
-    </Fragment>
+    </div>
   )
 }
 
