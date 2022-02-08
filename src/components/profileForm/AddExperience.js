@@ -1,10 +1,10 @@
 import React, {useState} from 'react'
-import {Link}  from 'react-router-dom';
+import {Link, useNavigate}  from 'react-router-dom';
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux';
 import { addExperiece } from '../../store/actions/profileAction';
 
-const AddExperience = props => {
+const AddExperience = ({addExperiece}) => {
   const [formData, setFormData] = useState({
     company: "",
     title: "",
@@ -14,15 +14,21 @@ const AddExperience = props => {
     current: false,
     description: ""
   })
-
+  const navigate = useNavigate();
   const [toDateDisable, setToDataDisable] = useState(false);
   const { company, title, location, from ,to, current, description} = formData;
   
   const handleOnChange = e => {
     setFormData({...formData, [e.target.name]: e.target.value })
   }
+
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    addExperiece(formData, navigate);
+    navigate('/dashboard');
+  }
   return ( 
-    <div>
+    <div className='container'>
       <h1 className="large text-primary">
        Add An Experience
       </h1>
@@ -31,7 +37,7 @@ const AddExperience = props => {
         positions that you have had in the past
       </p>
       <small>* = required field</small>
-      <form className="form">
+      <form className="form" >
         <div className="form-group">
           <input type="text" placeholder="* Job Title" name="title" required
             value={title}
@@ -86,7 +92,9 @@ const AddExperience = props => {
             onChange={ (e) => handleOnChange(e)}
           ></textarea>
         </div>
-        <input type="submit" className="btn btn-primary my-1" />
+        <input type="submit" className="btn btn-primary my-1" 
+          onClick={handleOnSubmit}
+        />
         <Link className="btn btn-light my-1" to="/dashboard">Go Back</Link>
       </form>
     </div>
