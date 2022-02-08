@@ -3,7 +3,8 @@ import { setAlert } from "./alertAction";
 
 import {
   GET_PROFILE,
-  PROFILE_ERROR
+  PROFILE_ERROR,
+  UPDATE_PROFILE
 } from '../actionTypes/profileActionTypes';
 
 // Get current users profile
@@ -57,7 +58,7 @@ export const createProfile = (formData, navigate, edit = false) => async dispatc
 }
 
 // Add experience
-export const createProfile = (formData, navigate) => async dispatch => {
+export const addExperiece = (formData, navigate) => async dispatch => {
   try {
     const config = {
       headers : {
@@ -88,7 +89,8 @@ export const createProfile = (formData, navigate) => async dispatch => {
   }
 }
 
-export const createProfile = (formData, navigate) => async dispatch => {
+// Add education
+export const AddEducation = (formData, navigate) => async dispatch => {
   try {
     const config = {
       headers : {
