@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {Link, useNavigate}  from 'react-router-dom';
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux';
-import { AddEducation, addEducation } from '../../store/actions/profileAction';
+import { addEducation } from '../../store/actions/profileAction';
 
 const AddEducation = ({addEducation}) => {
   const [formData, setFormData] = useState({

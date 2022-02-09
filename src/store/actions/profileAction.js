@@ -90,7 +90,7 @@ export const addExperiece = (formData, navigate) => async dispatch => {
 }
 
 // Add education
-export const AddEducation = (formData, navigate) => async dispatch => {
+export const addEducation = (formData, navigate) => async dispatch => {
   try {
     const config = {
       headers : {
