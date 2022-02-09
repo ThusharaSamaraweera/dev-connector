@@ -1,7 +1,8 @@
 import axios from 'axios';
 import setAuthToken from '../../utils/setAuthToken';
 import { REGISTER_FAIL, REGISTER_SUCCESS, USER_LOADED, AUTH_ERROR, LOGIN_FAIL, 
-      LOGIN_SUCCESS, LOGOUT, CLEAR_PROFILE } from '../actionTypes/authActionTypes';
+      LOGIN_SUCCESS, LOGOUT } from '../actionTypes/authActionTypes';
+import { CLEAR_PROFILE } from '../actionTypes/profileActionTypes';
 import { setAlert } from './alertAction';
 
 // Load user

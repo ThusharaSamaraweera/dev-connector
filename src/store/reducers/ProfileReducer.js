@@ -3,6 +3,9 @@ import {
   PROFILE_ERROR,
   UPDATE_PROFILE,
 } from "../actionTypes/profileActionTypes";
+import {
+  CLEAR_PROFILE
+} from '../actionTypes/profileActionTypes';
 
 const initState = {
   profile: null,
@@ -27,6 +30,13 @@ export default function(state = initState, action ){
       return {
         ...state,
         error: payload,
+        loading: false
+      }
+    case CLEAR_PROFILE:
+      return {
+        ...state,
+        profile: null,
+        repos: [],
         loading: false
       }
     default: 
