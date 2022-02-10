@@ -120,3 +120,39 @@ export const addEducation = (formData, navigate) => async dispatch => {
     }) 
   }
 }
+
+// Delete experince
+export const deleteExperince = (id) => async dispatch => {
+  try {
+    const res = axios.delete(`api/profile/experience/${id}`);
+    dispatch({
+      type: UPDATE_PROFILE,
+      payload: res.data
+    })
+    dispatch(setAlert('Experince removed', 'success'));
+
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: {msg: err.response.statusTest, status: err.response.status}
+    })
+  }
+}
+
+// Delete education
+export const deleteEducation = (id) => async dispatch => {
+  try {
+    const res = axios.delete(`api/profile/education/${id}`);
+    dispatch({
+      type: UPDATE_PROFILE,
+      payload: res.data
+    })
+    dispatch(setAlert('Education removed', 'success'));
+    
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: {msg: err.response.statusTest, status: err.response.status}
+    })
+  }
+}
