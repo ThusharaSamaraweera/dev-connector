@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from 'react'
-import PropTypes from 'prop-types'
+import propTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getCurrentProfile, deleteAccount } from '../../store/actions/profileAction';
 import Spinner from '../layout/Spinner';
@@ -64,11 +64,11 @@ const Dashboard = ({
   )
 }
 
-Dashboard.prototype = {
-  getCurrentProfile: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
-  profile: PropTypes.object.isRequired,
-  deleteAccount: PropTypes.func.isRequired,
+Dashboard.propTypes = {
+  getCurrentProfile: propTypes.func.isRequired,
+  auth: propTypes.object.isRequired,
+  profile: propTypes.object.isRequired,
+  deleteAccount: propTypes.func.isRequired,
 }
 
 const mapStateToProps = (state) => ({
