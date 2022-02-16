@@ -2,10 +2,15 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import Moment from 'react-moment';
+import { deleteEducation } from '../../store/actions/profileAction';
 
 const Education = (props) => {
-  const {education} = props;
-  const educations = education.map(edu => (
+  const {education, deleteEducation} = props;
+  const handleOnDelete = (id) => {
+    deleteEducation(id)
+  }
+
+  const educations = education?.map(edu => ( 
     <tr key={edu._id}>
       <td>{edu.school}</td>
       <th className='hide-sm'>{edu.degree}</th>
@@ -16,7 +21,9 @@ const Education = (props) => {
         }
       </td>
       <th>
-        <button className='btn btn-danger'>Delete</button>
+        <button className='btn btn-danger'
+          onClick={ () => handleOnDelete(edu._id)}
+        >Delete</button>
       </th>
     </tr>
   ))
@@ -42,6 +49,7 @@ const Education = (props) => {
 
 Education.propTypes = {
   education: PropTypes.array.isRequired,
+  deleteEducation: PropTypes.func.isRequired,
 }
 
-export default Education
+export default connect(null, {deleteEducation})(Education)

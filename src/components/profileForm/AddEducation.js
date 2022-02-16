@@ -72,13 +72,13 @@ const AddEducation = ({addEducation}) => {
                 setFormData({...formData, current: !current})
                 setToDataDisable(!toDateDisable)
               }}  
-            /> {' '} Current Job</p>
+            /> {' '} Current school</p>
         </div>
         <div className="form-group">
           <h4>To Date</h4>
           <input type="date" name="to" 
             value={to}
-            onChange={ (e) => handleOnChange(e)}
+            onChange={ (e) => handleOnChange(e)}            
             disabled={toDateDisable ? 'disabled' : ''}
           />
         </div>

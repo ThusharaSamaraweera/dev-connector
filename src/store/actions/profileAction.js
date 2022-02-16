@@ -2,6 +2,8 @@ import axios from "axios";
 import { setAlert } from "./alertAction";
 
 import {
+  CLEAR_PROFILE,
+  DELETE_ACCOUNT,
   GET_PROFILE,
   PROFILE_ERROR,
   UPDATE_PROFILE
@@ -18,7 +20,7 @@ export const getCurrentProfile = () => async dispatch => {
   } catch (err) {
     dispatch({
       type: PROFILE_ERROR,
-      payload: {msg: err.response.statusTest, status: err.response.state}
+      payload: {msg: err.response.statusTest, status: err.response.status}
     })
   }
 }
@@ -141,6 +143,7 @@ export const deleteExperince = (id) => async dispatch => {
 
 // Delete education
 export const deleteEducation = (id) => async dispatch => {
+  console.log('hi')
   try {
     const res = axios.delete(`api/profile/education/${id}`);
     dispatch({
@@ -155,4 +158,29 @@ export const deleteEducation = (id) => async dispatch => {
       payload: {msg: err.response.statusTest, status: err.response.status}
     })
   }
+}
+
+// Delete account
+export const deleteAccount = () => async dispatch => {
+  if(window.confirm('Want to delete account ? ')){
+    try {
+    const res = axios.delete(`api/profile`);
+
+    dispatch({
+      type: CLEAR_PROFILE
+    })
+    dispatch({
+      type: DELETE_ACCOUNT
+    })
+    
+    dispatch(setAlert('You account has been permanantly deleted', 'success'));
+      
+    } catch (err) {
+      dispatch({
+        type: PROFILE_ERROR,
+        payload: {msg: err.response.statusTest, status: err.response.status}
+      })
+    }
+  }
+
 }

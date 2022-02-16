@@ -1,3 +1,4 @@
+import { DELETE_ACCOUNT } from '../actionTypes/profileActionTypes';
 import {
   REGISTER_FAIL,
   REGISTER_SUCCESS,
@@ -6,7 +7,6 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
-  CLEAR_PROFILE
 } from './../actionTypes/authActionTypes'
 
 const initialState = {
@@ -41,6 +41,7 @@ function authReducer(state = initialState, action) {
     case AUTH_ERROR:
     case LOGIN_FAIL:
     case LOGOUT:
+    case DELETE_ACCOUNT:
       localStorage.removeItem('token');
       return {
         ...state,
