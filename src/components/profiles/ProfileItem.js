@@ -33,6 +33,14 @@ const ProfileItem = ({
           View Profile
         </Link>
       </div>
+      <ul>
+        {profile.skills.slice(0, 4).map((skill, index) => (
+          <li key={index} className='text-primary'>
+            <i className='fas fa-check'></i>
+            {' '}{skill}
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }
