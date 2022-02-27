@@ -17,7 +17,7 @@ const Dashboard = ({
 
   useEffect(() => {
     getCurrentProfile();
-  }, [])
+  }, [getCurrentProfile])
 
   const handleOnDeleteAccount = () => {
     deleteAccount();
@@ -26,7 +26,9 @@ const Dashboard = ({
   return (
     <div className='container'>
       {
-        loading && profile === null ? <Spinner /> :
+        loading && profile === null ? 
+          <Spinner /> 
+          :
           <Fragment>
             <h1 className="large text-primary">Dashboard</h1>
             <p className="lead">
