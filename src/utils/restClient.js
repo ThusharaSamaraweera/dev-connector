@@ -7,7 +7,7 @@ export const  HTTPS_METHODS = {
   DELETE : 'delete'
 }
 
-export const BASE_URL = 'http://localhost:5000';
+export const BASE_URL = 'https://dev-connector-with-mern.herokuapp.com';
 
 export const restClient = async ({
   method,
