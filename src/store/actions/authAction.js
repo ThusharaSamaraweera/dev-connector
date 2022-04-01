@@ -14,6 +14,13 @@ export const loadUser = () => async dispatch => {
       method: HTTPS_METHODS.GET,
       url: 'api/auth',
     })
+
+    if(res.status !== 200){
+      dispatch({
+        type: AUTH_ERROR,
+      })
+      return;
+    }
     dispatch({
       type: USER_LOADED,
       payload: res.data
@@ -67,6 +74,10 @@ export const login = (email, password) => async dispatch => {
 
   try {
     const res = await axios.post(`${BASE_URL}/api/auth`, body, config);
+
+    if(res.status !== 200){
+      return;
+    }
 
     dispatch({
       type: LOGIN_SUCCESS,
