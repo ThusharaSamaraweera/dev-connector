@@ -10,19 +10,18 @@ import Navbar from './components/layout/Navbar';
 import store from './store/store';
 import Alert from './components/layout/Alert';
 import {loadUser} from './store/actions/authAction';
-import setAuthToken from './utils/setAuthToken';
 import Dashboard from './components/dashboard/Dashboard';
 import PrivateRoute from './components/routing/PrivateRoutes';
-
-if (localStorage.token){
-  setAuthToken(localStorage.token);
-}
+import CreateProfile from './components/profileForm/CreateProfile';
+import EditProfile from './components/profileForm/EditProfile';
+import AddExperience from './components/profileForm/AddExperience';
+import AddEducation from './components/profileForm/AddEducation';
+import Profiles from './components/profiles/Profiles';
 
 const App = () => {
 
   useEffect(() => {
     store.dispatch(loadUser());
-
   }, [])
 
   return (
@@ -37,8 +36,28 @@ const App = () => {
               <Route path="/login" element={<Login/>} />
               <Route 
                 path='/dashboard'
-                element={<PrivateRoute path="/dashboard" component={Dashboard} />}
-              />             
+                element={<PrivateRoute component={Dashboard} />}
+              />  
+              <Route 
+                path='/create-profile'
+                element={<PrivateRoute component={CreateProfile} />}
+              />         
+              <Route 
+                path='/edit-profile'
+                element={<PrivateRoute component={EditProfile} />}
+              />    
+              <Route 
+                path='/add-experience'
+                element={<PrivateRoute component={AddExperience} />}
+              />      
+              <Route 
+                path='/add-education'
+                element={<PrivateRoute component={AddEducation} />}
+              />  
+              <Route 
+                path='/profiles'
+                element={<Profiles/>}
+              /> 
               
             </Routes>
           </Router>

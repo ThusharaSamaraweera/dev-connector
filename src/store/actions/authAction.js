@@ -1,18 +1,26 @@
 import axios from 'axios';
-import setAuthToken from '../../utils/setAuthToken';
+import { HTTPS_METHODS, restClient } from '../../utils/restClient';
 import { REGISTER_FAIL, REGISTER_SUCCESS, USER_LOADED, AUTH_ERROR, LOGIN_FAIL, 
-      LOGIN_SUCCESS, LOGOUT, CLEAR_PROFILE } from '../actionTypes/authActionTypes';
+      LOGIN_SUCCESS, LOGOUT } from '../actionTypes/authActionTypes';
+import { CLEAR_PROFILE } from '../actionTypes/profileActionTypes';
 import { setAlert } from './alertAction';
+import { BASE_URL } from '../../utils/restClient';
 
 // Load user
 export const loadUser = () => async dispatch => {
-  if(localStorage.token){
-    setAuthToken(localStorage.token)
-  }
   
   try {
-    const res = await axios.get('api/auth');
+    const res = await restClient({
+      method: HTTPS_METHODS.GET,
+      url: 'api/auth',
+    })
 
+    if(res.status !== 200){
+      dispatch({
+        type: AUTH_ERROR,
+      })
+      return;
+    }
     dispatch({
       type: USER_LOADED,
       payload: res.data
@@ -26,16 +34,14 @@ export const loadUser = () => async dispatch => {
 
 // Register user
 export const register = ({name, email, password}) => async dispatch => {
-  const config = {
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  }
 
   const body = JSON.stringify({name, email, password});
 
   try {
-    const res = await axios.post('/api/users', body, config);
+    const res = await restClient({
+      method: HTTPS_METHODS.POST,
+      url: '/api/users',
+    })
     
     dispatch({
       type: REGISTER_SUCCESS,
@@ -67,8 +73,12 @@ export const login = (email, password) => async dispatch => {
   const body = JSON.stringify({ email, password});
 
   try {
-    const res = await axios.post('/api/auth', body, config);
-    
+    const res = await axios.post(`${BASE_URL}/api/auth`, body, config);
+
+    if(res.status !== 200){
+      return;
+    }
+
     dispatch({
       type: LOGIN_SUCCESS,
       payload: res.data 
