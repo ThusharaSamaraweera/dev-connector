@@ -17,6 +17,7 @@ import EditProfile from './components/profileForm/EditProfile';
 import AddExperience from './components/profileForm/AddExperience';
 import AddEducation from './components/profileForm/AddEducation';
 import Profiles from './components/profiles/Profiles';
+import Footer from './components/layout/Footer';
 
 const App = () => {
 
@@ -60,6 +61,7 @@ const App = () => {
               /> 
               
             </Routes>
+            <Footer/>
           </Router>
       </Provider>
     </div>

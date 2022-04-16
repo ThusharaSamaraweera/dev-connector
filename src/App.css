@@ -43,6 +43,7 @@ img {
   padding: 0 2rem;
   margin-top: 6rem;
   margin-bottom: 3rem;
+  min-height: 70vh;
 }
 
 /* Text Styles*/
@@ -427,4 +428,9 @@ button {
     display: none;
   }
 
+}
+
+/* footer */
+.footer {
+  padding: 1rem;
 }
