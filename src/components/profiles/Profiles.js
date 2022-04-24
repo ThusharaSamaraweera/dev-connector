@@ -23,7 +23,7 @@ const Profiles = ({
             <div className='container'>
               <h2 className='large text-primary'>Developers</h2>
               <p className='lead'>
-                <i className='fab fa-connectdevelop'></i>
+                <i className='fas fa-link'></i>{' '}
                 Browse and connect with developers
               </p>
               <div className='profiles'>

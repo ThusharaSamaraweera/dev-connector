@@ -1,15 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 const ProfileItem = ({
   profile
 }) => {
+  const defaultPic = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.stack.imgur.com%2FaP9Cm.png%3Fs%3D328%26g%3D1&f=1&nofb=1";
 
   return (
     <div className='profile bg-light'>
-      <img src={profile.avatar} alt="" className="round-img"></img>
+      <img src={profile.avatar ? profile.avatar : defaultPic} alt="" className="round-img"></img>
       <div>
         <h2>{profile.user.name}</h2>
         <p>
@@ -17,7 +17,7 @@ const ProfileItem = ({
           {
             profile.company &&
             <span>
-              at {profile.company}
+              {" "} at {profile.company}
             </span>
           }
         </p>
@@ -25,22 +25,27 @@ const ProfileItem = ({
           {
             profile.location &&
             <span>
-              at {profile.location}
+            {" "} at {profile.location}
             </span>
           }
         </p>
-        <Link to={`/profile/${profile.user._id}`} className='btn btn-primary'>
+
+        {/*profile/${profile.user._id}*/}
+
+        <Link to={`#`} className='btn btn-primary'>
           View Profile
         </Link>
       </div>
-      <ul>
-        {profile.skills.slice(0, 4).map((skill, index) => (
-          <li key={index} className='text-primary'>
-            <i className='fas fa-check'></i>
-            {' '}{skill}
-          </li>
-        ))}
-      </ul>
+      <div>
+        <ul>
+          {profile.skills.slice(0, 4).map((skill, index) => (
+            <li key={index} className='text-primary'>
+              <i className='fas fa-check'></i>
+              {' '}{skill}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   )
 }
